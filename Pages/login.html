@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../Styles/login.css">
+    <script src="../Scripts/login.js"></script>
    
 </head>
 <body>
@@ -15,15 +16,15 @@
         
         <div>
             <div class="placeholder">
-                <input type="text" placeholder="Username">
+                <input type="text" id="username" placeholder="Username">
             </div>
             <br>
             <div class="placeholder">
-                <input type="password" placeholder="Password">
+                <input type="password" id="password" placeholder="Password">
             </div>
             <br>
              <div class="placeholder ">
-                 <button class="btn btn-primary">Login</button>
+                 <button class="btn btn-primary" onclick="doLogin()">Login</button>
             </div>
            
         </div>
