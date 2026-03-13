@@ -32,8 +32,13 @@ async function doLogin() {
 
         if (response.ok && result.success) {
             console.log("Success:", result.message);
+            if(result.role === 'User') {
+                    window.location.href = '/Pages/Terminal/home.html'; 
+            } else if(result.role === 'Admin') {
+                    window.location.href = '/Pages/Portal/home.html'; 
+            }
             
-            window.location.href = '/Pages/home.html'; 
+            
         } else {
             alert(`Login failed (${response.status}): ` + (result.message || 'Invalid credentials'));
         }
