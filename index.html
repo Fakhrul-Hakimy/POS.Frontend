@@ -5,185 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POS System</title>
     <style>
+        :root {
+            --bg-deep: #0b1220;
+            --bg-mid: #1e3a8a;
+            --glow-a: #0ea5e9;
+            --glow-b: #f97316;
+            --text: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-  background:#000;
-}
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at 20% 15%, rgba(14, 165, 233, 0.32), rgba(14, 165, 233, 0) 34%),
+                radial-gradient(circle at 80% 85%, rgba(249, 115, 22, 0.3), rgba(249, 115, 22, 0) 36%),
+                linear-gradient(140deg, var(--bg-deep), var(--bg-mid) 58%, #0b1220);
+            overflow: hidden;
+        }
 
-#load {
-  position:absolute;
-  width:600px;
-  height:36px;
-  left:50%;
-  top:40%;
-  margin-left:-300px;
-  overflow:visible;
-  -webkit-user-select:none;
-  -moz-user-select:none;
-  -ms-user-select:none;
-  user-select:none;
-  cursor:default;
-}
+        #load {
+            position: relative;
+            width: min(86vw, 620px);
+            height: 64px;
+            user-select: none;
+            cursor: default;
+        }
 
-#load div {
-  position:absolute;
-  width:50px;
-  height:36px;
-  opacity:0;
-  font-size:45px;
-  font-family:Helvetica, Arial, sans-serif;
-  animation:move 2s linear infinite;
-  -o-animation:move 2s linear infinite;
-  -moz-animation:move 2s linear infinite;
-  -webkit-animation:move 2s linear infinite;
-  transform:rotate(180deg);
-  -o-transform:rotate(180deg);
-  -moz-transform:rotate(180deg);
-  -webkit-transform:rotate(180deg);
-  color:#35C4F0;
-}
+        #load div {
+            position: absolute;
+            width: 54px;
+            height: 54px;
+            top: 4px;
+            opacity: 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+            font-weight: 800;
+            color: var(--text);
+            text-shadow: 0 0 14px rgba(14, 165, 233, 0.65);
+            animation: loading-wave 2.1s linear infinite;
+            transform: rotate(180deg);
+        }
 
-#load div:nth-child(2) {
-  animation-delay:0.2s;
-  -o-animation-delay:0.2s;
-  -moz-animation-delay:0.2s;
-  -webkit-animation-delay:0.2s;
-}
-#load div:nth-child(3) {
-  animation-delay:0.4s;
-  -o-animation-delay:0.4s;
-  -webkit-animation-delay:0.4s;
-  -webkit-animation-delay:0.4s;
-}
-#load div:nth-child(4) {
-  animation-delay:0.6s;
-  -o-animation-delay:0.6s;
-  -moz-animation-delay:0.6s;
-  -webkit-animation-delay:0.6s;
-}
-#load div:nth-child(5) {
-  animation-delay:0.8s;
-  -o-animation-delay:0.8s;
-  -moz-animation-delay:0.8s;
-  -webkit-animation-delay:0.8s;
-}
-#load div:nth-child(6) {
-  animation-delay:1s;
-  -o-animation-delay:1s;
-  -moz-animation-delay:1s;
-  -webkit-animation-delay:1s;
-}
-#load div:nth-child(7) {
-  animation-delay:1.2s;
-  -o-animation-delay:1.2s;
-  -moz-animation-delay:1.2s;
-  -webkit-animation-delay:1.2s;
-}
+        #load div:nth-child(1) { animation-delay: 0s; }
+        #load div:nth-child(2) { animation-delay: 0.2s; }
+        #load div:nth-child(3) { animation-delay: 0.4s; }
+        #load div:nth-child(4) { animation-delay: 0.6s; }
+        #load div:nth-child(5) { animation-delay: 0.8s; }
+        #load div:nth-child(6) { animation-delay: 1s; }
+        #load div:nth-child(7) { animation-delay: 1.2s; }
 
-@keyframes move {
-  0% {
-    left:0;
-    opacity:0;
-  }
-	35% {
-		left: 41%; 
-		-moz-transform:rotate(0deg);
-		-webkit-transform:rotate(0deg);
-		-o-transform:rotate(0deg);
-		transform:rotate(0deg);
-		opacity:1;
-	}
-	65% {
-		left:59%; 
-		-moz-transform:rotate(0deg); 
-		-webkit-transform:rotate(0deg); 
-		-o-transform:rotate(0deg);
-		transform:rotate(0deg); 
-		opacity:1;
-	}
-	100% {
-		left:100%; 
-		-moz-transform:rotate(-180deg); 
-		-webkit-transform:rotate(-180deg); 
-		-o-transform:rotate(-180deg); 
-		transform:rotate(-180deg);
-		opacity:0;
-	}
-}
+        @keyframes loading-wave {
+            0% {
+                left: 0;
+                opacity: 0;
+                transform: rotate(180deg) scale(0.86);
+                color: var(--glow-a);
+            }
 
-@-moz-keyframes move {
-	0% {
-		left:0; 
-		opacity:0;
-	}
-	35% {
-		left:41%; 
-		-moz-transform:rotate(0deg); 
-		transform:rotate(0deg);
-		opacity:1;
-	}
-	65% {
-		left:59%; 
-		-moz-transform:rotate(0deg); 
-		transform:rotate(0deg);
-		opacity:1;
-	}
-	100% {
-		left:100%; 
-		-moz-transform:rotate(-180deg); 
-		transform:rotate(-180deg);
-		opacity:0;
-	}
-}
+            40% {
+                left: 43%;
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+                color: var(--text);
+            }
 
-@-webkit-keyframes move {
-	0% {
-		left:0; 
-		opacity:0;
-	}
-	35% {
-		left:41%; 
-		-webkit-transform:rotate(0deg); 
-		transform:rotate(0deg); 
-		opacity:1;
-	}
-	65% {
-		left:59%; 
-		-webkit-transform:rotate(0deg); 
-		transform:rotate(0deg); 
-		opacity:1;
-	}
-	100% {
-		left:100%;
-		-webkit-transform:rotate(-180deg); 
-		transform:rotate(-180deg); 
-		opacity:0;
-	}
-}
+            64% {
+                left: 57%;
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+                color: var(--glow-b);
+            }
 
-@-o-keyframes move {
-	0% {
-		left:0; 
-		opacity:0;
-	}
-	35% {
-		left:41%; 
-		-o-transform:rotate(0deg); 
-		transform:rotate(0deg); 
-		opacity:1;
-	}
-	65% {
-		left:59%; 
-		-o-transform:rotate(0deg); 
-		transform:rotate(0deg); 
-		opacity:1;
-	}
-	100% {
-		left:100%; 
-		-o-transform:rotate(-180deg); 
-		transform:rotate(-180deg); 
-		opacity:0;
-	}
-}
+            100% {
+                left: 100%;
+                opacity: 0;
+                transform: rotate(-180deg) scale(0.86);
+                color: var(--glow-a);
+            }
+        }
+
+        @media (max-width: 520px) {
+            #load {
+                height: 56px;
+            }
+
+            #load div {
+                width: 44px;
+                height: 44px;
+                top: 6px;
+            }
+        }
     </style>
 </head>
 <body>

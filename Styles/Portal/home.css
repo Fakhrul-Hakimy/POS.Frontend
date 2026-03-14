@@ -1,93 +1,262 @@
-html, body {
-    background-color: #0a0a0a !important;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+:root {
+    --bg-main: #ecf4ff;
+    --surface: #ffffff;
+    --surface-soft: #f8fbff;
+    --line: #d5e2f2;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --brand: #0369a1;
+    --brand-strong: #075985;
+    --accent: #ea580c;
+    --shadow: 0 10px 32px rgba(15, 23, 42, 0.08);
 }
 
-.parent{
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+    color: var(--text-main);
+}
+
+body {
+    padding: 14px;
+    background:
+        radial-gradient(circle at 8% 12%, rgba(14, 165, 233, 0.2), rgba(14, 165, 233, 0) 36%),
+        radial-gradient(circle at 92% 100%, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0) 32%),
+        var(--bg-main);
+}
+
+.parent {
     display: grid;
-    grid-template-columns: 190px auto auto 400px;
-    grid-template-rows: 40px 35px 1fr 40px;
-    grid-template-areas: 
-        "header header header header"
-        "nav nav nav nav"
-        "content content content content"
-        "footer footer footer footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 64px 62px minmax(0, 1fr) 48px;
+    grid-template-areas:
+        "header"
+        "nav"
+        "content"
+        "footer";
+    gap: 12px;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    height: calc(100vh - 28px);
+}
+
+.header,
+.nav,
+.content,
+.footer {
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
 }
 
 .header {
     grid-area: header;
-    border-bottom: 0.5px solid #ff4d4d;
     display: flex;
-    justify-content: center; 
-    align-items: center;  
+    align-items: center;
+    padding: 0 18px;
 }
 
 .header p {
-    color: #ffffff;
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    font-size: 0.96rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
+    
+}
+
+.nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+ul li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 112px;
+    border: 1px solid #c7d7ea;
+    border-radius: 999px;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 700;
+    transition: all 180ms ease;
+}
+
+ul li a:hover {
+    color: #fff;
+    border-color: var(--brand);
+    background: linear-gradient(130deg, var(--brand), var(--brand-strong));
+    transform: translateY(-1px);
+}
+
+ul li a.active {
+    color: #fff;
+    border-color: var(--brand);
+    background: linear-gradient(130deg, var(--brand), var(--brand-strong));
+    transform: translateY(-1px);
 }
 
 .content {
     grid-area: content;
-  
+    overflow: auto;
+    padding: 18px;
+    background: linear-gradient(180deg, var(--surface), var(--surface-soft));
 }
 
-
-
-.content-item:hover {
-    background-color: #252525;
-    border-color: #ff4d4d;
-    transform: translateY(-2px);
+h1 {
+    margin: 0 0 18px;
+    font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.75rem);
+    letter-spacing: 0.02em;
 }
 
-.footer{
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+td,
+th {
+    padding: 12px 14px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+tr:last-child td {
+    border-bottom: 0;
+}
+
+.product-grid,
+.order-grid,
+.Dashboard-grid {
+    animation: panelFade 280ms ease-out;
+}
+
+.button {
+    margin-bottom: 14px;
+}
+
+.add-button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.add-button .btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    min-width: 120px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(3, 105, 161, 0.18);
+}
+
+.add-button .btn-primary {
+    background: linear-gradient(140deg, var(--brand), var(--brand-strong));
+}
+
+.add-button .btn-secondary {
+    background: linear-gradient(140deg, #64748b, #475569);
+}
+
+.card {
+    border: 1px solid #d7e2ef;
+    border-radius: 14px;
+    box-shadow: 0 8px 26px rgba(15, 23, 42, 0.08);
+    background: #fff;
+}
+
+.card-title {
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    padding: 10px 12px;
+}
+
+.form-control:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+}
+
+.footer {
     grid-area: footer;
-    border-top: 0.5px solid #ff4d4d;
     display: flex;
-    justify-content: center; 
-    align-items: center;  
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
 }
 
-.footer p{
-    color: #ffffff;
-    margin: 0; 
-    padding: 0; 
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: bold;
+.footer p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.82rem;
 }
 
-.nav{
-    grid-area: nav;
-    border-bottom: 0.5px solid #ff4d4d;
+@keyframes panelFade {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-ul{
-    list-style-type: none;
-    margin: 5px;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-}
-ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 0.5px solid transparent;
-    transition: all 0.3s ease;
+@media (max-width: 760px) {
+    body {
+        padding: 10px;
+    }
 
+    .parent {
+        grid-template-rows: 58px auto minmax(0, 1fr) 44px;
+        height: calc(100vh - 20px);
+    }
+
+    .header,
+    .nav,
+    .content,
+    .footer {
+        border-radius: 12px;
+    }
+
+    ul li a {
+        min-width: 96px;
+        font-size: 0.9rem;
+    }
+
+    .content {
+        padding: 14px;
+    }
+}
+
+.dt-info , .pagination , .dt-search , label{
+    padding-left: 20px;
 }

@@ -1,0 +1,69 @@
+<div class="category-grid">
+   <div class="butttons">
+        <div class="add-button">
+            <button class="btn btn-primary" onclick='showForms("addMode")'>Add Category</button>
+            <button class="btn btn-secondary" onclick='showForms("searchMode");  loadData()'>Load Data</button>
+        </div>
+    </div>
+    <div class="feedbackMsg d-none mt-3 text-center">
+        <p id="feedback"></p>
+    </div>
+
+    <div class="Mode">
+        <div class="searchMode d-none mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Search Categories</h5>
+                </div>
+                <div>
+                    <table id="categoryTable" class="display nowrap">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>            
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>       
+                                <th></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="editMode d-none mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Category</h5>
+                    <div>
+                        <input type="text" class="form-control" id="categoryName" placeholder="Category Name">
+                        <input type="text" class="form-control mt-3" id="categoryDescription" placeholder="Description">
+
+                        <button class="btn btn-primary mt-3" onclick="editCategory()"> Edit Category </button>
+                    </div>
+                </div>
+            </div>
+        </div>   
+
+        <div class="addMode d-none mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add New Category</h5>
+                    <div>
+                        <input type="text" class="form-control" id="categoryName" placeholder="Category Name">
+                        <input type="text" class="form-control mt-3" id="categoryDescription" placeholder="Description">
+
+                        <button class="btn btn-primary mt-3" onclick="addCategory()"> Add Category </button>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    
+   </div>
+</div>
+
