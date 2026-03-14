@@ -75,3 +75,19 @@ html, body {
     grid-area: nav;
     border-bottom: 0.5px solid #ff4d4d;
 }
+
+ul{
+    list-style-type: none;
+    margin: 5px;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 0.5px solid transparent;
+    transition: all 0.3s ease;
+
+}

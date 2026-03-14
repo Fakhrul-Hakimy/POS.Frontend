@@ -130,3 +130,22 @@ function updateOrderDisplay() {
     // Auto-scroll to the bottom when a new item is added
     itemList.scrollTop = itemList.scrollHeight;
 }
+
+
+async function loadPage(pageUrl) {
+    const contentDiv = document.querySelector('.content');
+    
+    try {
+        const response = await fetch(pageUrl);
+        if (!response.ok) throw new Error('Page not found');
+        
+        const html = await response.text();
+        contentDiv.innerHTML = html;
+    } catch (error) {
+        contentDiv.innerHTML = "<h2>Error loading page</h2><p>Please try again later.</p>";
+        console.error(error);
+    }
+}
+
+// Optional: Load Dashboard by default when the page first opens
+window.onload = () => loadPage('dashboard.html');
