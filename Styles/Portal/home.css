@@ -45,10 +45,9 @@ body {
     height: calc(100vh - 28px);
 }
 
-.header,
+
 .nav,
-.content,
-.footer {
+.content {
     border: 1px solid var(--line);
     border-radius: 16px;
     background: var(--surface);
@@ -63,11 +62,14 @@ body {
 }
 
 .header p {
-    margin: 0;
-    font-size: 0.96rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
     font-weight: 800;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    text-align: center;
+    align-items: center;
     
 }
 
