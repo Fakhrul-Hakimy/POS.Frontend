@@ -195,9 +195,9 @@ async function editModeProduct(id) {
             credentials: 'include'
         });
         const product = await response.json();
-        $('#EditproductName').val(product.name);
-        $('#EditproductPrice').val(product.price);
-        $('#EditproductDescription').val(product.description);
+                $('#EditproductName').val(product.name);
+                $('#EditproductPrice').val(product.price);
+                $('#EditproductDescription').val(product.description);
 
             const categoryId = product.categoryId ?? product.CategoryId ?? product.categoryID;
             if (categoryId != null) {
@@ -206,6 +206,48 @@ async function editModeProduct(id) {
     } catch (error) {
         console.error('Error fetching product details:', error);
         alert('An error occurred while fetching product details. Please try again.');
+    }
+
+}
+
+
+async function updateProduct() {
+    var Id = $('.editMode').attr('data-id');
+    console.log(Id);
+    const name = $('#EditproductName').val().trim();
+    const description = $('#EditproductDescription').val().trim();
+    const price = $('#EditproductPrice').val();
+    var categoryId = $('.editcategoryDropdown').val();
+    var parsedCategoryId = Number(categoryId);
+
+    try{
+        const response = await fetch(`${PRODUCT_API_BASE_URL}/api/product/${Id}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, description, price, categoryId: parsedCategoryId }),
+        });
+        if(response){
+            $('.feedbackMsg').addClass('alert alert-success').removeClass('d-none').text('Product updated successfully!').show();
+            $('#EditproductName').val('');
+            $('#EditproductPrice').val('');
+            $('#EditproductDescription').val('');
+            refreshProductTable();
+            setTimeout(() => {
+                $('.feedbackMsg').fadeOut();
+                $('.feedbackMsg').removeClass('alert alert-success').addClass('d-none').text('');
+            }, 3000);
+        } else {
+            $('.feedbackMsg').addClass('alert alert-danger').removeClass('d-none').text('Failed to update product. Please try again.').show();
+                setTimeout(() => {
+                $('.feedbackMsg').fadeOut();
+                $('.feedbackMsg').removeClass('alert alert-danger').addClass('d-none').text('');
+            }, 3000);
+
+        }
+    }catch (error) {
+        console.error('Error updating product:', error);
+        alert('An error occurred while updating the product. Please try again.');
     }
 
 }

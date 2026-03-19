@@ -6,7 +6,7 @@ async function addCategory() {
 
     const name = $('#categoryName').val().trim();
     const description = $('#categoryDescription').val().trim();
-
+    console.log(name, description);
     if (!name) {
         alert('Category name is required.');
         $('#addCategoryBtn').prop('disabled', false).text('Add Category');
@@ -131,8 +131,8 @@ async function editMode(id) {
             credentials: 'include'
         });
         const category = await response.json();
-        $('#categoryName').val(category.name);
-        $('#categoryDescription').val(category.description);
+        $('#EditcategoryName').val(category.name);
+        $('#EditcategoryDescription').val(category.description);
     } catch (error) {
         console.error('Error fetching category details:', error);
         alert('An error occurred while fetching category details. Please try again.');
@@ -143,8 +143,8 @@ async function editMode(id) {
 async function editCategory() {
     var Id = $('.editMode').attr('data-id');
     console.log(Id);
-    const name = $('#categoryName').val().trim();
-    const description = $('#categoryDescription').val().trim();
+    const name = $('#EditcategoryName').val().trim();
+    const description = $('#EditcategoryDescription').val().trim();
 
     try{
         const response = await fetch(`${CATEGORY_API_BASE_URL}/api/category/${Id}`, {
@@ -155,8 +155,8 @@ async function editCategory() {
         });
         if(response){
             $('.feedbackMsg').addClass('alert alert-success').removeClass('d-none').text('Category updated successfully!').show();
-            $('#categoryName').val('');
-            $('#categoryDescription').val('');
+            $('#EditcategoryName').val('');
+            $('#EditcategoryDescription').val('');
             refreshCategoryTable();
             setTimeout(() => {
                 $('.feedbackMsg').fadeOut();
