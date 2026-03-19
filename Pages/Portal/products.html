@@ -2,48 +2,100 @@
     <div class="button">
         <div class="add-button">
             <button class="btn btn-primary" onclick='showForms("addMode"); getDropdown();'>Add Product</button>
-            <button class="btn btn-secondary" onclick='showForms("searchMode")'>Load Data</button>
+            <button class="btn btn-secondary" onclick='showForms("searchMode"); loadProductData()'>Load Data</button>
             <button class="btn btn-secondary">Cancel</button>
         </div>
     </div>
     <div class="Mode">
-    <div class="searchMode d-none mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Search Products</h5>
+
+
+        <div class="searchMode d-none mt-5">
+            <div class="searchMode d-none mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Search Categories</h5>
+                    </div>
+                    <div>
+                        <table id="ProductTable" class="display nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="addMode d-none mt-5">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Add New Product</h5>
-                <div class="row g-3">
-                    <div class="col-md-6">
-                        <input type="text" class="form-control" id="productName" placeholder="Product Name">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="number" class="form-control" id="productPrice" placeholder="Price">
-                    </div>
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" id="productDescription" placeholder="Description">
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-control categoryDropdown"></select>
+        <div class="editMode d-none mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Edit Product</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="EditproductName" placeholder="Product Name">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="EditproductPrice" placeholder="Price">
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="EditproductDescription" placeholder="Description">
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control editcategoryDropdown"></select>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="updateProduct()"> Update Product </button>
                     </div>
 
-                    <button class="btn btn-primary" onclick="addProduct()"> Add Product </button>
                 </div>
 
+            </div>
+
         </div>
+        
 
-    </div>
 
-    </div>
+        <div class="addMode d-none mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add New Product</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="productName" placeholder="Product Name">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="productPrice" placeholder="Price">
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="productDescription" placeholder="Description">
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control addcategoryDropdown"></select>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="addProduct()"> Add Product </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 </div>
-
-
-
